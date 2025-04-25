@@ -1,0 +1,39 @@
+{{!< default}} {{#post}} {{> "header"}}
+
+    <main id="sm-main">
+        <article class="sm-content-grid sm-post-content {{post_class}} {{slug}}">
+            {{content}}
+        </article>
+
+        {{#if @custom.show_table_of_contents}}
+        <div class="sm-post-toc">
+            <div class="sm-post-toc-contents"></div>
+            <button class="sm-post-toc-btn">
+                <svg class="sm-toc-icon" aria-hidden="true">
+                    <use href="#sm-toc-icon"></use>
+                </svg>
+                <svg class="sm-toc-icon-close" aria-hidden="true">
+                    <use href="#sm-close-icon"></use>
+                </svg>
+            </button>
+        </div>
+        {{/if}}
+    </main>
+
+    <section class="sm-grid">
+        {{comments}}
+
+        <div class="sm-related-posts">
+            {{#get "posts" limit="3" include="tags" filter="id:-{{../id}}+tag:[{{../tags.[*].slug}}]" as |related|}}
+            {{#if related}}
+            <h2>Read this next</h2>
+            <div class="sm-related-posts-grid-container">
+                {{#foreach related}}
+                {{> "card"}}
+                {{/foreach}}
+            </div>
+            {{/if}}
+            {{/get}}
+        </div>
+    </section>
+    {{/post}}

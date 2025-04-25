@@ -1,0 +1,109 @@
+{{!< default}} <main id="sm-main">
+
+    {{#if @custom.hero_title}}
+    {{> "hero"}}
+    {{/if}}
+
+    <div class="sm-grid">
+        <div class="sm-grid-home sm-grid-feature">
+            {{#foreach posts from=1 to=5}}
+            {{#if @index}}
+            {{> "card"}}
+            {{> "card" horizontal="true"}}
+            {{else}}
+            {{> "card" horizontal="true" premiere="true"}}
+            {{/if}}
+            {{/foreach}}
+        </div>
+    </div>
+
+    {{#if posts.[5]}}
+    <div class="sm-grid sm-home-accent">
+        <div class="sm-grid-home sm-grid-feature-left">
+
+            {{#if @site.members_enabled}}
+            {{^if @site.members_invite_only}}
+            <aside class="sm-feature-card sm-cta-card">
+                {{#if @site.icon}}
+                <picture>
+                    <source srcset="{{img_url @site.icon size=" 80" format="avif" }}" type="image/avif" sizes="80px">
+                    <source srcset="{{img_url @site.icon size=" 80" format="webp" }}" type="image/webp" sizes="80px">
+                    <img src="{{img_url @site.icon size=" 80"}}" alt="{{@site.title}} icon" sizes="80px">
+                </picture>
+                {{/if}}
+
+                <form data-members-form="subscribe">
+                    <div class="sm-cta-copy sm-default">
+                        <h2>Don't miss out</h2>
+                        <p>Sign up for the newsletter</p>
+                    </div>
+                    <div class="sm-cta-copy sm-success">
+                        <h2>Nice!</h2>
+                        <p>Check your email for a sign in link</p>
+                    </div>
+                    <div class="sm-cta-copy sm-error">
+                        <h2>Oh, no</h2>
+                        <p>Something went wrong. Try again.</p>
+                    </div>
+                    <input data-members-email type="email" placeholder="your email" required>
+                    <button class="sm-icon-button sm-default"><svg aria-hidden="true">
+                            <use href="#sm-mail-icon"></use>
+                        </svg>subscribe</button>
+                    <button class="sm-icon-button sm-loading"><svg aria-hidden="true">
+                            <use href="#sm-loading-icon"></use>
+                        </svg>loading</button>
+                    <button class="sm-icon-button sm-success"><svg aria-hidden="true">
+                            <use href="#sm-mail-check-icon"></use>
+                        </svg>success</button>
+                    <button class="sm-icon-button sm-error"><svg aria-hidden="true">
+                            <use href="#sm-error-icon"></use>
+                        </svg>error</button>
+                </form>
+            </aside>
+            {{/if}}
+            {{else}}
+            <aside class="sm-feature-card sm-cta-card">
+                {{#if @site.icon}}
+                <picture>
+                    <source srcset="{{img_url @site.icon size=" 80" format="avif" }}" type="image/avif" sizes="80px">
+                    <source srcset="{{img_url @site.icon size=" 80" format="webp" }}" type="image/webp" sizes="80px">
+                    <img src="{{img_url @site.icon size=" 80"}}" alt="{{@site.title}} icon" sizes="80px">
+                </picture>
+                {{/if}}
+                <div class="sm-feature-card-text">
+                    <p>{{@site.description}}</p>
+                </div>
+            </aside>
+            {{/if}}
+
+            {{#foreach posts from=6 to=10}}
+            {{> "card"}}
+            {{> "card" horizontal="true"}}
+            {{/foreach}}
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if posts.[10]}}
+    <div class="sm-grid">
+        <div class="sm-grid-home sm-grid-feature-right">
+            {{#foreach posts from=11 to=15}}
+            {{> "card" horizontal="true"}}
+            {{> "card"}}
+            {{/foreach}}
+
+            {{#get "tags" include="count.posts" limit="5" order="count.posts desc"}}
+            <aside class="sm-feature-card sm-tags-card">
+                <h2><a href="topics">Topics</a></h2>
+                {{#foreach tags}}
+                <a href="{{url}}">{{name}} <span>{{count.posts}}</span></a>
+                {{/foreach}}
+            </aside>
+            {{/get}}
+        </div>
+    </div>
+    {{/if}}
+
+    </main>
+
+    {{pagination}}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" data-color-pref="{{@custom.color_mode}}" data-accent-color="{{@site.accent_color}}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+
+    {{!-- Preloads and preconnects --}}
+    <link rel="preconnect" href="https://cdn.jsdelivr.net/">
+    <link rel="preload" href="{{asset 'fonts/public-sans.woff2'}}" as="font" type="font/woff2" crossorigin>
+
+    {{!-- Color Mode Script --}}
+    <script>
+        const colorModePref = document.documentElement.dataset.colorPref;
+        const colorModePrefOpposite = colorModePref === 'dark' ? 'light' : 'dark';
+        if (
+            localStorage.getItem('pref') === colorModePrefOpposite ||
+            (window.matchMedia(`(prefers-color-scheme: ${colorModePrefOpposite})`).matches && !localStorage.getItem('pref'))
+        ) {
+            document.documentElement.setAttribute('data-color-pref', colorModePrefOpposite);
+        }
+    </script>
+
+    {{!-- Accent Color to CSS Variables --}}
+    <script>
+        function hexToRgb(hex) {
+            let r = 0, g = 0, b = 0;
+            if (hex.length === 4) {
+                r = `0x${hex[1]}${hex[1]}`;
+                g = `0x${hex[2]}${hex[2]}`;
+                b = `0x${hex[3]}${hex[3]}`;
+            } else if (hex.length === 7) {
+                r = `0x${hex[1]}${hex[2]}`;
+                g = `0x${hex[3]}${hex[4]}`;
+                b = `0x${hex[5]}${hex[6]}`;
+            }
+            return [parseInt(r), parseInt(g), parseInt(b)];
+        }
+
+        (function () {
+            const hex = document.documentElement.dataset.accentColor || "#ff0000";
+            const [r, g, b] = hexToRgb(hex);
+            const m = r / 255, c = g / 255, d = b / 255;
+            const min = Math.min(m, c, d), max = Math.max(m, c, d);
+            const delta = max - min;
+            let h = 0, s = 0, l = (max + min) / 2;
+
+            if (delta !== 0) {
+                s = delta / (1 - Math.abs(2 * l - 1));
+                switch (max) {
+                    case m: h = ((c - d) / delta) % 6; break;
+                    case c: h = (d - m) / delta + 2; break;
+                    case d: h = (m - c) / delta + 4; break;
+                }
+                h = Math.round(h * 60);
+                if (h < 0) h += 360;
+            }
+
+            document.documentElement.style.setProperty("--primary-h", h);
+            document.documentElement.style.setProperty("--saturation", `${(s * 100).toFixed(1)}%`);
+            document.documentElement.style.setProperty("--lightness", `${(l * 100).toFixed(1)}%`);
+            document.documentElement.style.setProperty("--complementary-color", (h + 180) % 360);
+            document.documentElement.style.setProperty("--r", r / 255);
+            document.documentElement.style.setProperty("--g", g / 255);
+            document.documentElement.style.setProperty("--b", b / 255);
+            document.documentElement.style.setProperty("--cr", (255 - r) / 255);
+            document.documentElement.style.setProperty("--cg", (255 - g) / 255);
+            document.documentElement.style.setProperty("--cb", (255 - b) / 255);
+        })();
+    </script>
+
+    {{!-- Styles --}}
+    <link rel="stylesheet" href="{{asset 'built/app.css'}}">
+
+    {{!-- Main JS --}}
+    <script src="{{asset 'built/app.js'}}" type="module" defer></script>
+
+    {{#if @custom.syntax_highlighting}}
+    {{#is "post"}}
+    <script src="{{asset 'built/syntax-highlighting.js'}}" type="module" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const createCopyButtons = () => {
+                document.querySelectorAll("pre").forEach((block) => {
+                    // Tránh thêm nhiều nút nếu đã có
+                    if (block.parentElement.classList.contains("code-wrapper")) return;
+
+                    const wrapper = document.createElement("div");
+                    wrapper.style.position = "relative";
+                    wrapper.classList.add("code-wrapper");
+                    block.parentNode.insertBefore(wrapper, block);
+                    wrapper.appendChild(block);
+
+                    const button = document.createElement("button");
+                    button.className = "copy-button";
+                    button.setAttribute("aria-label", "Copy code");
+
+                    const updateButtonStyle = () => {
+                        const isDark = document.documentElement.getAttribute("data-color-pref") === "dark";
+                        button.style.cssText = `
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    background: ${isDark ? "#2e2e2e" : "#f0f0f0"};
+                    color: ${isDark ? "#f0f0f0" : "#333"};
+                    border: 1px solid ${isDark ? "#555" : "#ddd"};
+                    padding: 4px 6px;
+                    font-size: 0.75rem;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    opacity: 0.7;
+                    transition: all 0.2s ease-in-out;
+                `;
+                    };
+
+                    button.innerHTML = `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v16h13a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 18H8V7h11v16z"/>
+                </svg>
+            `;
+                    updateButtonStyle();
+
+                    button.addEventListener("mouseenter", () => {
+                        button.style.opacity = 1;
+                    });
+                    button.addEventListener("mouseleave", () => {
+                        button.style.opacity = 0.7;
+                    });
+                    button.addEventListener("click", () => {
+                        const code = block.innerText;
+                        navigator.clipboard.writeText(code).then(() => {
+                            const original = button.innerHTML;
+                            button.innerHTML = "Copied!";
+                            setTimeout(() => button.innerHTML = original, 1500);
+                        });
+                    });
+
+                    wrapper.appendChild(button);
+
+                    // Theo dõi thay đổi theme và cập nhật lại màu nút
+                    const observer = new MutationObserver(() => {
+                        updateButtonStyle();
+                    });
+
+                    observer.observe(document.documentElement, {
+                        attributes: true,
+                        attributeFilter: ["data-color-pref"]
+                    });
+                });
+            };
+
+            createCopyButtons();
+        });
+    </script>
+
+    {{/is}}
+    {{/if}}
+
+    {{!-- Ghost Head --}}
+    {{ghost_head}}
+
+    {{!-- Custom Bookmark Styling --}}
+    <style>
+        .kg-bookmark-card a.kg-bookmark-container {
+            border-color: var(--border-color);
+            border-radius: var(--radius);
+            transition: border-color .3s;
+        }
+
+        .kg-bookmark-icon {
+            margin-inline: 0 6px;
+        }
+
+        .kg-bookmark-title {
+            font-size: 1rem;
+        }
+
+        .kg-bookmark-content {
+            padding: 1rem;
+        }
+
+        .kg-bookmark-description,
+        .kg-bookmark-metadata {
+            font-size: var(--small);
+            color: var(--element-light);
+        }
+
+        .kg-bookmark-card:hover a.kg-bookmark-container {
+            border-color: var(--primary-light);
+        }
+
+        .kg-toggle-card,
+        .kg-callout-card {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background-color: var(--border-color);
+        }
+
+        .kg-toggle-heading svg {
+            color: var(--primary-light);
+        }
+
+        .kg-toggle-card:hover .kg-toggle-heading svg {
+            color: var(--primary);
+        }
+
+        .kg-btn,
+        .kg-button-card {
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .kg-btn {
+            height: initial;
+            padding: var(--button-padding);
+        }
+
+        .kg-btn-accent {
+            color: var(--button-text);
+            background-color: var(--primary);
+            transition: background-color .3s;
+        }
+
+        .kg-btn-accent:hover {
+            background-color: var(--primary-light);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="{{body_class}}">
+    {{> "svg"}}
+    {{> "navbar"}}
+    {{> "nav-menu"}}
+    {{{body}}}
+    {{> "footer"}}
+    {{> "search"}}
+    {{ghost_foot}}
+</body>
+
+</html>

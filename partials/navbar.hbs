@@ -1,0 +1,78 @@
+{{! Navigation bar }}
+<div class='sm-grid sm-navbar-container'>
+  <header class='sm-navbar'>
+    <div class='sm-navbar-left'>
+
+      {{!-- {{#is 'home'}}
+      <h1 class='sm-site-title'><a href='{{@site.url}}'>{{@site.title}}</a></h1>
+      {{else}}
+      <p class='sm-site-title'><a href='{{@site.url}}'>{{@site.title}}</a></p>
+      {{/is}} --}}
+      {{#is 'home'}}
+      <h1 class='sm-site-title'>
+        <a href='{{@site.url}}' class="sm-site-branding">
+          {{#if @site.logo}}
+          <img class="sm-site-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+          {{/if}}
+          {{@site.title}}
+        </a>
+      </h1>
+      {{else}}
+      <p class='sm-site-title'>
+        <a href='{{@site.url}}' class="sm-site-branding">
+          {{#if @site.logo}}
+          <img class="sm-site-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+          {{/if}}
+          {{@site.title}}
+        </a>
+      </p>
+      {{/is}}
+
+
+      {{navigation}}
+    </div>
+
+    <div class='sm-navbar-right'>
+      <button class='sm-circle-icon-button' data-ghost-search aria-label='search'>
+        <svg aria-hidden='true'>
+          <use href='#sm-search-icon'></use>
+        </svg>
+      </button>
+      <button class='sm-circle-icon-button sm-dark-mode' aria-label='Turn on dark mode'>
+        <svg aria-hidden='true'>
+          <use href='#sm-moon-icon'></use>
+        </svg>
+      </button>
+      <button class='sm-circle-icon-button sm-light-mode' aria-label='Turn on light mode'>
+        <svg aria-hidden='true'>
+          <use href='#sm-sun-icon'></use>
+        </svg>
+      </button>
+
+      <button class='sm-circle-icon-button sm-saves-button' aria-label='Open saves menu'>
+        <svg aria-hidden='true'>
+          <use href='#sm-heart-outline-icon'></use>
+        </svg>
+      </button>
+
+      {{#if @site.members_enabled}}
+      {{#if @member}}<button class='sm-button' data-portal='account'>Account</button>{{else}}<button class='sm-button'
+        data-portal='signup'>Subscribe</button>
+      {{/if}}
+      {{/if}}
+    </div>
+
+    <button class='sm-circle-icon-button sm-navbar-menu-button' aria-label='menu'><svg aria-hidden='true'>
+        <use href='#sm-menu-icon'></use>
+      </svg></button>
+  </header>
+</div>
+
+<div class='sm-navbar-saves'>
+  <button class='sm-navbar-close-saves' aria-label='close saves menu'>
+    <svg aria-hidden='true'>
+      <use href='#sm-close-icon'></use>
+    </svg>
+  </button>
+  <div class='sm-overflow-articles'></div>
+</div>

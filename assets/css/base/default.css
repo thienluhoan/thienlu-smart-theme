@@ -1,0 +1,112 @@
+html {
+  height: 100%;
+  font-family: var(--body-typeface);
+  font-size: 1rem;
+  font-size: clamp(1rem, 0.9091rem + 0.4545vw, 1.25rem);
+  font-feature-settings: 'kern';
+  font-kerning: normal;
+  line-height: 1.5;
+  color: var(--element);
+  background-color: var(--surface);
+  scroll-behavior: smooth;
+  scroll-padding-block-start: 4rem;
+  text-rendering: optimizelegibility;
+  text-size-adjust: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+:target::before {
+  margin-inline-end: 0.25em;
+  color: var(--primary);
+  content: '➠';
+}
+
+::selection {
+  color: #000;
+  background-color: var(--primary-light);
+}
+
+.sm-zap {
+  position: relative;
+  color: var(--border-color);
+  text-align: center;
+}
+
+.sm-grid>.sm-zap {
+  grid-column: content;
+}
+
+.sm-zap::before,
+.sm-zap::after {
+  position: absolute;
+  top: 50%;
+  width: 48%;
+  height: 1px;
+  content: '';
+}
+
+.sm-zap::before {
+  left: 0;
+  background-image: linear-gradient(90deg, var(--border-color), transparent);
+}
+
+.sm-zap::after {
+  right: 0;
+  background-image: linear-gradient(-90deg, var(--border-color), transparent);
+}
+
+.sm-site-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sm-site-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.kg-gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.kg-gallery-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.kg-gallery-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius, 8px);
+  object-fit: cover;
+  flex-grow: 1;
+}
+
+.kg-bookmark-author,
+.kg-bookmark-publisher,
+.kg-bookmark-thumbnail {
+  display: block;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.kg-bookmark-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius, 8px);
+}

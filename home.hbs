@@ -99,7 +99,7 @@
         <div class="sm-grid-home">
             {{#get "tags" include="count.posts" limit="5" order="count.posts desc"}}
             <aside class="sm-feature-card sm-tags-card">
-                <h2><a href="topics">Các bài viết theo chủ đề</a></h2>
+                <div class="topic-title">Các bài viết theo chủ đề</div>
                 {{#foreach tags}}
                 <a href="{{url}}">{{name}} <span>{{count.posts}} bài viết</span></a>
                 {{/foreach}}

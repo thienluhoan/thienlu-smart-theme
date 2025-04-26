@@ -35,8 +35,8 @@
   color: var(--primary);
 }
 
-:root[data-color-pref='light'] .sm-tags-card>a:nth-of-type(1):hover {
-  background-color: --secondary;
+/* :root[data-color-pref='light'] .sm-tags-card>a:nth-of-type(1):hover {
+  background-color: var(--primary);
 }
 
 :root[data-color-pref='light'] .sm-tags-card>a:nth-of-type(2):hover {
@@ -44,44 +44,36 @@
 }
 
 :root[data-color-pref='light'] .sm-tags-card>a:nth-of-type(3):hover {
-  /* color: var(--element); */
   background-color: --secondary;
 }
 
 :root[data-color-pref='light'] .sm-tags-card>a:nth-of-type(4):hover {
-  /* color: var(--element); */
   background-color: --secondary;
 }
 
 :root[data-color-pref='light'] .sm-tags-card>a:nth-of-type(5):hover {
-  /* color: var(--element); */
   background-color: --secondary;
 }
 
 :root[data-color-pref='dark'] .sm-tags-card>a:nth-of-type(1):hover {
-  /* color: var(--element); */
-  background-color: --secondary;
+  background-color: var(--primary);
 }
 
 :root[data-color-pref='dark'] .sm-tags-card>a:nth-of-type(2):hover {
-  /* color: var(--element); */
   background-color: --secondary;
 }
 
 :root[data-color-pref='dark'] .sm-tags-card>a:nth-of-type(3):hover {
-  /* color: var(--element); */
   background-color: --secondary;
 }
 
 :root[data-color-pref='dark'] .sm-tags-card>a:nth-of-type(4):hover {
-  /* color: var(--element); */
   background-color: --secondary;
 }
 
 :root[data-color-pref='dark'] .sm-tags-card>a:nth-of-type(5):hover {
-  /* color: var(--element); */
   background-color: --secondary;
-}
+} */
 
 /* CTA */
 .sm-cta-card {
@@ -326,17 +318,17 @@ picture~.sm-feature-card-text {
   overflow: hidden;
 }
 
-.sm-tags-card h2 {
+/* .sm-tags-card h2 {
   font-size: 1.5rem;
   font-weight: 600;
   margin: 1rem;
-}
+} */
 
-.sm-tags-card h2 a {
+/* .sm-tags-card h2 a {
   text-decoration: none;
   color: inherit;
   font-size: 1rem;
-}
+} */
 
 .sm-tags-card a {
   display: inline-block;
@@ -354,11 +346,29 @@ picture~.sm-feature-card-text {
   letter-spacing: var(--letter-spacing);
 }
 
-.sm-tags-card a:hover {
-  color: #111;
+:root[data-color-pref='dark'] .sm-tags-card a:hover {
+  background-color: var(--primary);
+  color: #000000;
   /* text-decoration: underline; */
-  color: var(--primary);
 }
+
+:root[data-color-pref='light'] .sm-tags-card a:hover {
+  background-color: var(--primary);
+  color: #000000;
+  /* text-decoration: underline; */
+}
+
+.sm-tags-card>.topic-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.6rem;
+  text-decoration: none;
+  padding-left: 1rem;
+}
+
+/* .sm-tags-card>.topic-title:hover {
+  color: var(--primary);
+} */
 
 .sm-cta-card,
 .sm-tags-card {

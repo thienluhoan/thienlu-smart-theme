@@ -6,7 +6,7 @@
 
     <div class="sm-grid">
         <div class="sm-grid-home sm-grid-feature">
-            {{#foreach posts from=1 to=5}}
+            {{#foreach posts from=1 to=8}}
             {{#if @index}}
             {{> "card"}}
             {{> "card" horizontal="true"}}
@@ -21,7 +21,7 @@
     <div class="sm-grid sm-home-accent">
         <div class="sm-grid-home sm-grid-feature-left">
 
-            {{#if @site.members_enabled}}
+            {{!-- {{#if @site.members_enabled}}
             {{^if @site.members_invite_only}}
             <aside class="sm-feature-card sm-cta-card">
                 {{#if @site.icon}}
@@ -74,9 +74,9 @@
                     <p>{{@site.description}}</p>
                 </div>
             </aside>
-            {{/if}}
+            {{/if}} --}}
 
-            {{#foreach posts from=6 to=10}}
+            {{#foreach posts from=9 to=14}}
             {{> "card"}}
             {{> "card" horizontal="true"}}
             {{/foreach}}

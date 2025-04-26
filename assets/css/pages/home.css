@@ -36,7 +36,7 @@
   flex-direction: column;
 }
 
-.sm-card-1.sm-card-horizontal .sm-card-link > img {
+.sm-card-1.sm-card-horizontal .sm-card-link>img {
   width: 100%;
   max-width: 100%;
 }
@@ -46,7 +46,7 @@
     flex-direction: row;
   }
 
-  .sm-card-1.sm-card-horizontal .sm-card-link > img {
+  .sm-card-1.sm-card-horizontal .sm-card-link>img {
     width: 50%;
   }
 }

@@ -36,7 +36,7 @@
 }
 
 :root[data-color-pref='light'] .sm-tags-card>a:nth-of-type(1):hover {
-  background-color: --secondary
+  background-color: --secondary;
 }
 
 :root[data-color-pref='light'] .sm-tags-card>a:nth-of-type(2):hover {
@@ -356,7 +356,8 @@ picture~.sm-feature-card-text {
 
 .sm-tags-card a:hover {
   color: #111;
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color: var(--primary);
 }
 
 .sm-cta-card,

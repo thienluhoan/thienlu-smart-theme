@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    {{#if posts.[5]}}
+    {{#if posts.[9]}}
     <div class="sm-grid sm-home-accent">
         <div class="sm-grid-home sm-grid-feature-left">
 
@@ -84,25 +84,30 @@
     </div>
     {{/if}}
 
-    {{#if posts.[10]}}
+    {{#if posts.[15]}}
     <div class="sm-grid">
         <div class="sm-grid-home sm-grid-feature-right">
-            {{#foreach posts from=11 to=15}}
+            {{#foreach posts from=15 to=25}}
             {{> "card" horizontal="true"}}
             {{> "card"}}
             {{/foreach}}
+        </div>
+    </div>
+    {{/if}}
 
+    <div class="sm-grid">
+        <div class="sm-grid-home">
             {{#get "tags" include="count.posts" limit="5" order="count.posts desc"}}
             <aside class="sm-feature-card sm-tags-card">
-                <h2><a href="topics">Topics</a></h2>
+                <h2><a href="topics">Các bài viết theo chủ đề</a></h2>
                 {{#foreach tags}}
-                <a href="{{url}}">{{name}} <span>{{count.posts}}</span></a>
+                <a href="{{url}}">{{name}} <span>{{count.posts}} bài viết</span></a>
                 {{/foreach}}
             </aside>
             {{/get}}
         </div>
     </div>
-    {{/if}}
+
 
     </main>
 

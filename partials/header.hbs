@@ -2,84 +2,67 @@
 <header class="sm-header-grid{{#if class}} {{class}}{{/if}}">
 
     {{#if profile_image}}
-        <picture class="">
-        <source 
-            srcset="
-        {{img_url profile_image size="48" format="avif"}} 48w,
-        {{img_url profile_image size="80" format="avif"}} 80w,
-        {{img_url profile_image size="160" format="avif"}} 160w,
-        {{img_url profile_image size="240" format="avif"}} 240w,
-        {{img_url profile_image size="528" format="avif"}} 528w,
-        {{img_url profile_image size="800" format="avif"}} 800w,
-        {{img_url profile_image size="1200" format="avif"}} 1200w,
-        {{img_url profile_image size="1600" format="avif"}} 1600w,
-        {{img_url profile_image size="1920" format="avif"}} 1920w,
-        {{img_url profile_image size="2000" format="avif"}} 2000w"
-            sizes="160px" 
-            type="image/avif"
-        >
-        <source 
-            srcset="
-        {{img_url profile_image size="48" format="webp"}} 48w,
-        {{img_url profile_image size="80" format="webp"}} 80w,
-        {{img_url profile_image size="160" format="webp"}} 160w,
-        {{img_url profile_image size="240" format="webp"}} 240w,
-        {{img_url profile_image size="528" format="webp"}} 528w,
-        {{img_url profile_image size="800" format="webp"}} 800w,
-        {{img_url profile_image size="1200" format="webp"}} 1200w,
-        {{img_url profile_image size="1600" format="webp"}} 1600w,
-        {{img_url profile_image size="1920" format="webp"}} 1920w,
-        {{img_url profile_image size="2000" format="webp"}} 2000w"
-            sizes="160px" 
-            type="image/webp"
-        >
-        <img class="sm-author-profile-image"
-            srcset="
-        {{img_url profile_image size="48"}} 48w,
-        {{img_url profile_image size="80"}} 80w,
-        {{img_url profile_image size="160"}} 160w,
-        {{img_url profile_image size="240"}} 240w,
-        {{img_url profile_image size="528"}} 528w,
-        {{img_url profile_image size="800"}} 800w,
-        {{img_url profile_image size="1200"}} 1200w,
-        {{img_url profile_image size="1600"}} 1600w,
-        {{img_url profile_image size="1920"}} 1920w,
-        {{img_url profile_image size="2000"}} 2000w"
-            
-            sizes="160px" 
-            src="{{img_url profile_image size="160"}}"
-            alt="{{name}}"
-            width="160" height="160"
-        >
-        </picture> 
+    <picture class="">
+        <source srcset="
+        {{img_url profile_image size=" 48" format="avif" }} 48w, {{img_url profile_image size="80" format="avif" }}
+            80w, {{img_url profile_image size="160" format="avif" }} 160w, {{img_url profile_image size="240"
+            format="avif" }} 240w, {{img_url profile_image size="528" format="avif" }} 528w, {{img_url profile_image
+            size="800" format="avif" }} 800w, {{img_url profile_image size="1200" format="avif" }} 1200w, {{img_url
+            profile_image size="1600" format="avif" }} 1600w, {{img_url profile_image size="1920" format="avif" }}
+            1920w, {{img_url profile_image size="2000" format="avif" }} 2000w" sizes="160px" type="image/avif">
+        <source srcset="
+        {{img_url profile_image size=" 48" format="webp" }} 48w, {{img_url profile_image size="80" format="webp" }}
+            80w, {{img_url profile_image size="160" format="webp" }} 160w, {{img_url profile_image size="240"
+            format="webp" }} 240w, {{img_url profile_image size="528" format="webp" }} 528w, {{img_url profile_image
+            size="800" format="webp" }} 800w, {{img_url profile_image size="1200" format="webp" }} 1200w, {{img_url
+            profile_image size="1600" format="webp" }} 1600w, {{img_url profile_image size="1920" format="webp" }}
+            1920w, {{img_url profile_image size="2000" format="webp" }} 2000w" sizes="160px" type="image/webp">
+        <img class="sm-author-profile-image" srcset="
+        {{img_url profile_image size=" 48"}} 48w, {{img_url profile_image size="80" }} 80w, {{img_url profile_image
+            size="160" }} 160w, {{img_url profile_image size="240" }} 240w, {{img_url profile_image size="528" }} 528w,
+            {{img_url profile_image size="800" }} 800w, {{img_url profile_image size="1200" }} 1200w, {{img_url
+            profile_image size="1600" }} 1600w, {{img_url profile_image size="1920" }} 1920w, {{img_url profile_image
+            size="2000" }} 2000w" sizes="160px" src="{{img_url profile_image size=" 160"}}" alt="{{name}}" width="160"
+            height="160">
+    </picture>
     {{/if}}
 
     <h1 class="sm-header-title">{{~#if title~}}{{title}}
-    {{~else if name~}}{{~name~}}{{^is "tag"}}<span class="sm-tag-count">{{plural author-count empty="" singular="% post" plural="% posts"}}</span>{{/is}}
-    {{~else~}}{{~@site.title~}}
-    {{~#match pagination.page ">" 1~}}<span class="sm-tag-count">Page {{pagination.page}}</span>{{~/match~}}
-    {{~/if~}}
-    {{~#is "tag"~}}
-    <span class="sm-tag-count">{{plural count empty="" singular="% post" plural="% posts"}}</span>
-    {{~/is~}}</h1>
-    
+        {{~else if name~}}{{~name~}}{{^is "tag"}}<span class="sm-tag-count">{{plural author-count empty="" singular="%
+            post" plural="% posts"}}</span>{{/is}}
+        {{~else~}}{{~@site.title~}}
+        {{~#match pagination.page ">" 1~}}<span class="sm-tag-count">Page {{pagination.page}}</span>{{~/match~}}
+        {{~/if~}}
+        {{~#is "tag"~}}
+        <span class="sm-tag-count">{{plural count empty="" singular="% post" plural="% posts"}}</span>
+        {{~/is~}}
+    </h1>
+
 
     {{#if custom_excerpt}}<p class="sm-header-excerpt">{{custom_excerpt}}</p>{{/if}}
 
     {{#if description}}
-        <p>{{description}}</p>
+    <p>{{description}}</p>
     {{/if}}
 
-    {{#if location}}<p class="sm-author-location"><svg aria-hidden="true"><use href="#sm-map-icon"></use></svg>{{location}}</p>{{/if}}
+    {{#if location}}<p class="sm-author-location"><svg aria-hidden="true">
+            <use href="#sm-map-icon"></use>
+        </svg>{{location}}</p>{{/if}}
 
     {{#if bio}}<p class="sm-header-excerpt">{{bio}}</p>{{/if}}
 
     {{#has any="twitter,facebook,website"}}
     <div class="sm-header-meta">
         <section class="sm-author-socials">
-            {{#if twitter}}<a class="sm-icon-button" href="{{twitter_url}}"><svg aria-hidden="true"><use href="#twitter-icon"></use></svg>{{twitter}}</a>{{/if}}
-            {{#if facebook}}<a class="sm-icon-button" href="{{facebook_url}}"><svg aria-hidden="true"><use href="#facebook-icon"></use></svg>{{facebook}}</a>{{/if}}
-            {{#if website}}<a class="sm-icon-button sm-author-website" href="{{website}}"><svg aria-hidden="true"><use href="#sm-external-link-icon"></use></svg>{{website}}</a>{{/if}}
+            {{#if twitter}}<a class="sm-icon-button" href="{{twitter_url}}"><svg aria-hidden="true">
+                    <use href="#twitter-icon"></use>
+                </svg>{{twitter}}</a>{{/if}}
+            {{#if facebook}}<a class="sm-icon-button" href="{{facebook_url}}"><svg aria-hidden="true">
+                    <use href="#facebook-icon"></use>
+                </svg>{{facebook}}</a>{{/if}}
+            {{#if website}}<a class="sm-icon-button sm-author-website" href="{{website}}"><svg aria-hidden="true">
+                    <use href="#sm-external-link-icon"></use>
+                </svg>{{website}}</a>{{/if}}
         </section>
     </div>
     {{/has}}
@@ -88,220 +71,144 @@
     <div class="sm-post-author-block">
         <div class="sm-post-author-profile-image">
             {{~#foreach authors~}}
-                {{~#if profile_image~}}
-                <picture class="">
-                    <source 
-                    srcset="{{img_url profile_image size="48" format="avif"}} 48w,
-                    {{img_url profile_image size="80" format="avif"}} 80w,
-                    {{img_url profile_image size="160" format="avif"}} 160w,
-                    {{img_url profile_image size="240" format="avif"}} 240w,
-                    {{img_url profile_image size="528" format="avif"}} 528w,
-                    {{img_url profile_image size="800" format="avif"}} 800w,
-                    {{img_url profile_image size="1200" format="avif"}} 1200w,
-                    {{img_url profile_image size="1600" format="avif"}} 1600w,
-                    {{img_url profile_image size="1920" format="avif"}} 1920w,
-                    {{img_url profile_image size="2000" format="avif"}} 2000w"
-                    sizes="80px" 
-                    type="image/avif"
-                    >
-                    <source 
-                    srcset="{{img_url profile_image size="48" format="webp"}} 48w,
-                    {{img_url profile_image size="80" format="webp"}} 80w,
-                    {{img_url profile_image size="160" format="webp"}} 160w,
-                    {{img_url profile_image size="240" format="webp"}} 240w,
-                    {{img_url profile_image size="528" format="webp"}} 528w,
-                    {{img_url profile_image size="800" format="webp"}} 800w,
-                    {{img_url profile_image size="1200" format="webp"}} 1200w,
-                    {{img_url profile_image size="1600" format="webp"}} 1600w,
-                    {{img_url profile_image size="1920" format="webp"}} 1920w,
-                    {{img_url profile_image size="2000" format="webp"}} 2000w"
-                    sizes="80px" 
-                    type="image/webp"
-                    >
-                    <img
-                    srcset="{{img_url profile_image size="48"}} 48w,
-                    {{img_url profile_image size="80"}} 80w,
-                    {{img_url profile_image size="160"}} 160w,
-                    {{img_url profile_image size="240"}} 240w,
-                    {{img_url profile_image size="528"}} 528w,
-                    {{img_url profile_image size="800"}} 800w,
-                    {{img_url profile_image size="1200"}} 1200w,
-                    {{img_url profile_image size="1600"}} 1600w,
-                    {{img_url profile_image size="1920"}} 1920w,
-                    {{img_url profile_image size="2000"}} 2000w"
-                    sizes="80px" 
-                    src="{{img_url profile_image size="80"}}"
-                    alt="{{name}}"
-                    width="80" height="80"
-                    >
-                </picture>
-                {{~/if~}}
+            {{~#if profile_image~}}
+            <picture class="">
+                <source srcset="{{img_url profile_image size=" 48" format="avif" }} 48w, {{img_url profile_image
+                    size="80" format="avif" }} 80w, {{img_url profile_image size="160" format="avif" }} 160w, {{img_url
+                    profile_image size="240" format="avif" }} 240w, {{img_url profile_image size="528" format="avif" }}
+                    528w, {{img_url profile_image size="800" format="avif" }} 800w, {{img_url profile_image size="1200"
+                    format="avif" }} 1200w, {{img_url profile_image size="1600" format="avif" }} 1600w, {{img_url
+                    profile_image size="1920" format="avif" }} 1920w, {{img_url profile_image size="2000" format="avif"
+                    }} 2000w" sizes="80px" type="image/avif">
+                <source srcset="{{img_url profile_image size=" 48" format="webp" }} 48w, {{img_url profile_image
+                    size="80" format="webp" }} 80w, {{img_url profile_image size="160" format="webp" }} 160w, {{img_url
+                    profile_image size="240" format="webp" }} 240w, {{img_url profile_image size="528" format="webp" }}
+                    528w, {{img_url profile_image size="800" format="webp" }} 800w, {{img_url profile_image size="1200"
+                    format="webp" }} 1200w, {{img_url profile_image size="1600" format="webp" }} 1600w, {{img_url
+                    profile_image size="1920" format="webp" }} 1920w, {{img_url profile_image size="2000" format="webp"
+                    }} 2000w" sizes="80px" type="image/webp">
+                <img srcset="{{img_url profile_image size=" 48"}} 48w, {{img_url profile_image size="80" }} 80w,
+                    {{img_url profile_image size="160" }} 160w, {{img_url profile_image size="240" }} 240w, {{img_url
+                    profile_image size="528" }} 528w, {{img_url profile_image size="800" }} 800w, {{img_url
+                    profile_image size="1200" }} 1200w, {{img_url profile_image size="1600" }} 1600w, {{img_url
+                    profile_image size="1920" }} 1920w, {{img_url profile_image size="2000" }} 2000w" sizes="80px"
+                    src="{{img_url profile_image size=" 80"}}" alt="{{name}}" width="80" height="80">
+            </picture>
+            {{~/if~}}
             {{~/foreach~}}
         </div>
         <div>
             <p>by {{authors}}</p>
             <div class="sm-post-meta">
-                <time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+                <time datetime="{{date format=" DD/MM/YYYY"}}">{{date}}</time>
                 {{#if primary_tag}}<a href="{{primary_tag.url}}">{{primary_tag.name}}</a>{{/if}}
                 <p class="sm-post-reading-time">{{reading_time}}</p>
                 <button class="sm-post-save-button sm-love-button" data-id="{{slug}}" data-title="{{title}}">
                     <span class="sm-heart-outline-icon">
-                        <svg><use href="#sm-heart-outline-icon"></use></svg> Save
+                        <svg>
+                            <use href="#sm-heart-outline-icon"></use>
+                        </svg> Save
                     </span>
                     <span class="sm-heart-fill-icon">
-                        <svg><use href="#sm-heart-fill-icon"></use></svg> Saved
+                        <svg>
+                            <use href="#sm-heart-fill-icon"></use>
+                        </svg> Saved
                     </span>
                 </button>
             </div>
-            
+
         </div>
     </div>
     {{/is}}
 
     {{#if feature_image}}
-        <figure class="sm-header-image">
-            <picture class="">
-              <source 
-                srcset="
-                {{img_url feature_image size="48" format="avif"}} 48w,
-                {{img_url feature_image size="80" format="avif"}} 80w,
-                {{img_url feature_image size="160" format="avif"}} 160w,
-                {{img_url feature_image size="240" format="avif"}} 240w,
-                {{img_url feature_image size="528" format="avif"}} 528w,
-                {{img_url feature_image size="800" format="avif"}} 800w,
-                {{img_url feature_image size="1200" format="avif"}} 1200w,
-                {{img_url feature_image size="1600" format="avif"}} 1600w,
-                {{img_url feature_image size="1920" format="avif"}} 1920w,
-                {{img_url feature_image size="2000" format="avif"}} 2000w"
-                sizes="(min-width: 750px) 800px, 100vw" 
-                type="image/avif"
-              >
-              <source 
-                srcset="
-                {{img_url feature_image size="48" format="webp"}} 48w,
-                {{img_url feature_image size="80" format="webp"}} 80w,
-                {{img_url feature_image size="160" format="webp"}} 160w,
-                {{img_url feature_image size="240" format="webp"}} 240w,
-                {{img_url feature_image size="528" format="webp"}} 528w,
-                {{img_url feature_image size="800" format="webp"}} 800w,
-                {{img_url feature_image size="1200" format="webp"}} 1200w,
-                {{img_url feature_image size="1600" format="webp"}} 1600w,
-                {{img_url feature_image size="1920" format="webp"}} 1920w,
-                {{img_url feature_image size="2000" format="webp"}} 2000w"
-                sizes="(min-width: 750px) 800px, 100vw" 
-                type="image/webp"
-              >
-              <img
-                srcset="
-                {{img_url feature_image size="48"}} 48w,
-                {{img_url feature_image size="80"}} 80w,
-                {{img_url feature_image size="160"}} 160w,
-                {{img_url feature_image size="240"}} 240w,
-                {{img_url feature_image size="528"}} 528w,
-                {{img_url feature_image size="800"}} 800w,
-                {{img_url feature_image size="1200"}} 1200w,
-                {{img_url feature_image size="1600"}} 1600w,
-                {{img_url feature_image size="1920"}} 1920w,
-                {{img_url feature_image size="2000"}} 2000w"
-                sizes="(min-width: 750px) 800px, 100vw" 
-                src="{{img_url feature_image size="1200"}}"
-                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-              >
-            </picture>
-            
-            <figcaption>{{feature_image_caption}}</figcaption>
-        </figure>
+    <figure class="sm-header-image">
+        <picture class="">
+            <source srcset="
+                {{img_url feature_image size=" 48" format="avif" }} 48w, {{img_url feature_image size="80"
+                format="avif" }} 80w, {{img_url feature_image size="160" format="avif" }} 160w, {{img_url feature_image
+                size="240" format="avif" }} 240w, {{img_url feature_image size="528" format="avif" }} 528w, {{img_url
+                feature_image size="800" format="avif" }} 800w, {{img_url feature_image size="1200" format="avif" }}
+                1200w, {{img_url feature_image size="1600" format="avif" }} 1600w, {{img_url feature_image size="1920"
+                format="avif" }} 1920w, {{img_url feature_image size="2000" format="avif" }} 2000w"
+                sizes="(min-width: 750px) 800px, 100vw" type="image/avif">
+            <source srcset="
+                {{img_url feature_image size=" 48" format="webp" }} 48w, {{img_url feature_image size="80"
+                format="webp" }} 80w, {{img_url feature_image size="160" format="webp" }} 160w, {{img_url feature_image
+                size="240" format="webp" }} 240w, {{img_url feature_image size="528" format="webp" }} 528w, {{img_url
+                feature_image size="800" format="webp" }} 800w, {{img_url feature_image size="1200" format="webp" }}
+                1200w, {{img_url feature_image size="1600" format="webp" }} 1600w, {{img_url feature_image size="1920"
+                format="webp" }} 1920w, {{img_url feature_image size="2000" format="webp" }} 2000w"
+                sizes="(min-width: 750px) 800px, 100vw" type="image/webp">
+            <img srcset="
+                {{img_url feature_image size=" 48"}} 48w, {{img_url feature_image size="80" }} 80w, {{img_url
+                feature_image size="160" }} 160w, {{img_url feature_image size="240" }} 240w, {{img_url feature_image
+                size="528" }} 528w, {{img_url feature_image size="800" }} 800w, {{img_url feature_image size="1200" }}
+                1200w, {{img_url feature_image size="1600" }} 1600w, {{img_url feature_image size="1920" }} 1920w,
+                {{img_url feature_image size="2000" }} 2000w" sizes="(min-width: 750px) 800px, 100vw"
+                src="{{img_url feature_image size=" 1200"}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+        </picture>
+
+        <figcaption>{{feature_image_caption}}</figcaption>
+    </figure>
     {{else if cover_image}}
-        <figure class="sm-header-image">
-            <picture class="">
-              <source 
-                srcset="
-                {{img_url cover_image size="48" format="avif"}} 48w,
-                {{img_url cover_image size="80" format="avif"}} 80w,
-                {{img_url cover_image size="160" format="avif"}} 160w,
-                {{img_url cover_image size="240" format="avif"}} 240w,
-                {{img_url cover_image size="528" format="avif"}} 528w,
-                {{img_url cover_image size="800" format="avif"}} 800w,
-                {{img_url cover_image size="1200" format="avif"}} 1200w,
-                {{img_url cover_image size="1600" format="avif"}} 1600w,
-                {{img_url cover_image size="1920" format="avif"}} 1920w,
-                {{img_url cover_image size="2000" format="avif"}} 2000w"
-                sizes="(min-width: 750px) 800px, 100vw" 
-                type="image/avif"
-              >
-              <source 
-                srcset="
-                {{img_url cover_image size="48" format="webp"}} 48w,
-                {{img_url cover_image size="80" format="webp"}} 80w,
-                {{img_url cover_image size="160" format="webp"}} 160w,
-                {{img_url cover_image size="240" format="webp"}} 240w,
-                {{img_url cover_image size="528" format="webp"}} 528w,
-                {{img_url cover_image size="800" format="webp"}} 800w,
-                {{img_url cover_image size="1200" format="webp"}} 1200w,
-                {{img_url cover_image size="1600" format="webp"}} 1600w,
-                {{img_url cover_image size="1920" format="webp"}} 1920w,
-                {{img_url cover_image size="2000" format="webp"}} 2000w"
-                sizes="(min-width: 750px) 800px, 100vw" 
-                type="image/webp"
-              >
-              <img
-                srcset="
-                {{img_url cover_image size="48"}} 48w,
-                {{img_url cover_image size="80"}} 80w,
-                {{img_url cover_image size="160"}} 160w,
-                {{img_url cover_image size="240"}} 240w,
-                {{img_url cover_image size="528"}} 528w,
-                {{img_url cover_image size="800"}} 800w,
-                {{img_url cover_image size="1200"}} 1200w,
-                {{img_url cover_image size="1600"}} 1600w,
-                {{img_url cover_image size="1920"}} 1920w,
-                {{img_url cover_image size="2000"}} 2000w"
-                sizes="(min-width: 750px) 800px, 100vw" 
-                src="{{img_url cover_image size="48"}}"
-                alt="{{name}}"
-              >
-            </picture>
-        </figure>
+    <figure class="sm-header-image">
+        <picture class="">
+            <source srcset="
+                {{img_url cover_image size=" 48" format="avif" }} 48w, {{img_url cover_image size="80" format="avif" }}
+                80w, {{img_url cover_image size="160" format="avif" }} 160w, {{img_url cover_image size="240"
+                format="avif" }} 240w, {{img_url cover_image size="528" format="avif" }} 528w, {{img_url cover_image
+                size="800" format="avif" }} 800w, {{img_url cover_image size="1200" format="avif" }} 1200w, {{img_url
+                cover_image size="1600" format="avif" }} 1600w, {{img_url cover_image size="1920" format="avif" }}
+                1920w, {{img_url cover_image size="2000" format="avif" }} 2000w" sizes="(min-width: 750px) 800px, 100vw"
+                type="image/avif">
+            <source srcset="
+                {{img_url cover_image size=" 48" format="webp" }} 48w, {{img_url cover_image size="80" format="webp" }}
+                80w, {{img_url cover_image size="160" format="webp" }} 160w, {{img_url cover_image size="240"
+                format="webp" }} 240w, {{img_url cover_image size="528" format="webp" }} 528w, {{img_url cover_image
+                size="800" format="webp" }} 800w, {{img_url cover_image size="1200" format="webp" }} 1200w, {{img_url
+                cover_image size="1600" format="webp" }} 1600w, {{img_url cover_image size="1920" format="webp" }}
+                1920w, {{img_url cover_image size="2000" format="webp" }} 2000w" sizes="(min-width: 750px) 800px, 100vw"
+                type="image/webp">
+            <img srcset="
+                {{img_url cover_image size=" 48"}} 48w, {{img_url cover_image size="80" }} 80w, {{img_url cover_image
+                size="160" }} 160w, {{img_url cover_image size="240" }} 240w, {{img_url cover_image size="528" }} 528w,
+                {{img_url cover_image size="800" }} 800w, {{img_url cover_image size="1200" }} 1200w, {{img_url
+                cover_image size="1600" }} 1600w, {{img_url cover_image size="1920" }} 1920w, {{img_url cover_image
+                size="2000" }} 2000w" sizes="(min-width: 750px) 800px, 100vw" src="{{img_url cover_image size=" 48"}}"
+                alt="{{name}}">
+        </picture>
+    </figure>
     {{/if}}
 
     {{#is "post"}}
-        <div class="sm-post-share">
-            <p>Share</p>
-            <a class='sm-circle-icon-button'
-                href='https://twitter.com/intent/tweet?text={{url absolute='true'}}'
-                aria-label='Share on Twitter'
-                target='_blank'
-                rel='noopener noreferrer'
-            >
-                <svg aria-hidden='true'><use href='#twitter-icon'></use></svg>
-            </a>
-            <a
-                class='sm-circle-icon-button'
-                href='http://www.linkedin.com/shareArticle?mini=true&amp;url={{url
-                absolute='true'
-                }}'
-                aria-label='Share on LinkedIn'
-                target='_blank'
-                rel='noopener noreferrer'
-            ><svg aria-hidden='true'><use
-                    href='#linkedin-icon'
-                ></use></svg></a>
-            <a
-                class='sm-circle-icon-button'
-                href='http://www.facebook.com/sharer.php?u={{url absolute='true'}}'
-                aria-label='Share on Facebook'
-                target='_blank'
-                rel='noopener noreferrer'
-            ><svg aria-hidden='true'><use
-                    href='#facebook-icon'
-                ></use></svg></a>
-            <button class='sm-circle-icon-button sm-copy-button' aria-label="Copy link">
-                <svg aria-hidden='true'
-                ><use href='#sm-copy-icon'></use></svg>
-                <svg aria-hidden='true'
-                ><use href='#sm-check-icon'></use></svg>
-            </button>
-        </div>
+    <div class="sm-post-share">
+        <p>Share</p>
+        <a class='sm-circle-icon-button' href='https://twitter.com/intent/tweet?text={{url absolute=' true'}}'
+            aria-label='Share on Twitter' target='_blank' rel='noopener noreferrer'>
+            <svg aria-hidden='true'>
+                <use href='#twitter-icon'></use>
+            </svg>
+        </a>
+        <a class='sm-circle-icon-button' href='http://www.linkedin.com/shareArticle?mini=true&amp;url={{url
+                absolute=' true' }}' aria-label='Share on LinkedIn' target='_blank' rel='noopener noreferrer'><svg
+                aria-hidden='true'>
+                <use href='#linkedin-icon'></use>
+            </svg></a>
+        <a class='sm-circle-icon-button' href='http://www.facebook.com/sharer.php?u={{url absolute=' true'}}'
+            aria-label='Share on Facebook' target='_blank' rel='noopener noreferrer'><svg aria-hidden='true'>
+                <use href='#facebook-icon'></use>
+            </svg></a>
+        <button class='sm-circle-icon-button sm-copy-button' aria-label="Copy link">
+            <svg aria-hidden='true'>
+                <use href='#sm-copy-icon'></use>
+            </svg>
+            <svg aria-hidden='true'>
+                <use href='#sm-check-icon'></use>
+            </svg>
+        </button>
+    </div>
     {{/is}}
 
 </header>

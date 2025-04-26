@@ -12,10 +12,10 @@
   grid-template-columns: repeat(auto-fit, minmax(min(21.875rem, 100%), 1fr));
   grid-column: content;
   gap: var(--gap);
-  padding: 6rem 0;
+  padding: 3rem 0;
 }
 
-.sm-card-2.sm-card-horizontal,
+.sm-card-2.sm-card-vertical,
 .sm-card-3.sm-card-vertical,
 .sm-card-4.sm-card-vertical,
 .sm-card-5.sm-card-vertical,
@@ -24,7 +24,7 @@
 .sm-card-8.sm-card-vertical,
 .sm-card-9.sm-card-vertical,
 .sm-card-10.sm-card-vertical,
-.sm-card-11.sm-card-horizontal,
+.sm-card-11.sm-card-vertical,
 .sm-card-12.sm-card-vertical,
 .sm-card-13.sm-card-vertical,
 .sm-card-14.sm-card-vertical,
@@ -55,15 +55,18 @@
   .sm-grid-feature {
     grid-template-areas:
       'card-1 card-1 card-1 card-1'
-      'card-2 card-2 card-3 card-3'
-      'card-4 card-4 card-5 card-5';
+      'card-2 card-2 card-3 card-4'
+      'card-5 card-6 card-7 card-8';
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .sm-grid-feature-left,
-  .sm-grid-feature-right {
+  /* .sm-grid-feature-right {
+    grid-template-areas:
+      'card-1 card-1 card-1 card-1'
+      'card-2 card-2 card-3 card-4'
+      'card-5 card-6 card-7 card-8';
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  } */
 
   .sm-card-1 {
     grid-area: card-1;
@@ -86,30 +89,33 @@
   }
 
   .sm-grid-feature-left {
+    display: grid;
     grid-template-areas:
-      'feature card-6 card-6'
-      'feature card-7 card-7'
-      'card-8 card-9 card-10';
+      'card-9 card-10 card-11'
+      'card-12 card-13 card-14'
+      'card-15 card-16 card-17';
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
   }
 
-  .sm-grid-feature-right {
+  /* .sm-grid-feature-right {
     grid-template-areas:
-      'card-11 card-11 feature'
-      'card-12 card-12 feature'
-      'card-13 card-14 card-15';
-  }
+      'card-17 card-18 card-19'
+      'card-20 card-21 card-22'
+      'card-23 card-24 card-25';
+  } */
 
   .sm-card-2.sm-card-horizontal,
   .sm-card-3.sm-card-horizontal,
   .sm-card-4.sm-card-horizontal,
   .sm-card-5.sm-card-horizontal,
-  .sm-card-6.sm-card-vertical,
-  .sm-card-7.sm-card-vertical,
+  .sm-card-6.sm-card-horizontal,
+  .sm-card-7.sm-card-horizontal,
   .sm-card-8.sm-card-horizontal,
   .sm-card-9.sm-card-horizontal,
   .sm-card-10.sm-card-horizontal,
-  .sm-card-11.sm-card-vertical,
-  .sm-card-12.sm-card-vertical,
+  .sm-card-11.sm-card-horizontal,
+  .sm-card-12.sm-card-horizontal,
   .sm-card-13.sm-card-horizontal,
   .sm-card-14.sm-card-horizontal,
   .sm-card-15.sm-card-horizontal {
@@ -120,18 +126,19 @@
   .sm-card-3.sm-card-vertical,
   .sm-card-4.sm-card-vertical,
   .sm-card-5.sm-card-vertical,
-  .sm-card-6.sm-card-horizontal,
-  .sm-card-7.sm-card-horizontal,
+  .sm-card-6.sm-card-vertical,
+  .sm-card-7.sm-card-vertical,
   .sm-card-8.sm-card-vertical,
   .sm-card-9.sm-card-vertical,
   .sm-card-10.sm-card-vertical,
-  .sm-card-11.sm-card-horizontal,
-  .sm-card-12.sm-card-horizontal,
+  .sm-card-11.sm-card-vertical,
+  .sm-card-12.sm-card-vertical,
   .sm-card-13.sm-card-vertical,
   .sm-card-14.sm-card-vertical,
   .sm-card-15.sm-card-vertical {
     display: initial;
   }
+
 
   .sm-feature-card {
     grid-area: feature;

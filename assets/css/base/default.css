@@ -33,7 +33,7 @@ body {
 
 .sm-zap {
   position: relative;
-  color: var(--border-color);
+  /* color: var(--border-color); */
   text-align: center;
 }
 

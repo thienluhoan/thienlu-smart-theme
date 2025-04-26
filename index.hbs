@@ -1,18 +1,16 @@
-{{!< default}}
-{{!-- The tag above means: insert everything in this file
-into the {body} of the default.hbs template --}}
-{{> "header"}}
+{{!< default}} {{!-- The tag above means: insert everything in this file into the {body} of the default.hbs template
+    --}} {{> "header"}}
 
-<div class="sm-grid">
-    <div class="sm-zap"><span>⌁</span></div>
-</div>
-
-<main class="sm-grid" id="sm-main">
-    <div class="sm-basic-grid">
-        {{#foreach posts}}
-            {{> "card"}}
-        {{/foreach}}
+    <div class="sm-grid">
+        <div class="sm-zap"><span>🚀</span></div>
     </div>
-</main>
 
-{{pagination}}
+    <main class="sm-grid" id="sm-main">
+        <div class="sm-basic-grid">
+            {{#foreach posts}}
+            {{> "card"}}
+            {{/foreach}}
+        </div>
+    </main>
+
+    {{pagination}}

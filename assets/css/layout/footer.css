@@ -12,7 +12,7 @@
   color: var(--element-dark);
 }
 
-.sm-footer > *:not(:last-child) {
+.sm-footer>*:not(:last-child) {
   margin-block-end: 1em;
 }
 
@@ -24,7 +24,7 @@
     margin-block-end: 0;
   }
 
-  .sm-footer > div:not(:last-child) {
+  .sm-footer>div:not(:last-child) {
     padding-inline-end: 1em;
     margin-block-end: 0;
   }
@@ -88,4 +88,12 @@
 
 .sm-footer-meta a {
   white-space: nowrap;
+}
+
+.github-icon-color {
+  fill: #181717;
+}
+
+[data-color-pref='dark'] .github-icon-color {
+  fill: #ffffff;
 }

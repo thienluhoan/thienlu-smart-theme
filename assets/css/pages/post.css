@@ -31,7 +31,7 @@
   display: none;
 }
 
-.sm-post-author-profile-image:empty + div {
+.sm-post-author-profile-image:empty+div {
   text-align: center;
 }
 
@@ -45,7 +45,7 @@
   object-fit: cover;
 }
 
-.sm-post-author-profile-image img + img {
+.sm-post-author-profile-image img+img {
   z-index: 4;
   margin-inline-end: -1rem;
   transform: translateX(-1rem);
@@ -127,12 +127,12 @@
   opacity: 0.8;
 }
 
-.sm-post-meta > *:not(:last-child)::after {
+.sm-post-meta>*:not(:last-child)::after {
   margin-inline-start: 0.5em;
-  content: '\002301';
+  content: '\0030FB';
 }
 
-.sm-post-meta > a:hover::after {
+.sm-post-meta>a:hover::after {
   color: var(--element-light);
 }
 
@@ -184,7 +184,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .sm-related-posts-grid-container > article:last-child {
+  .sm-related-posts-grid-container>article:last-child {
     display: none;
   }
 }
@@ -194,7 +194,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .sm-related-posts-grid-container > article:last-child {
+  .sm-related-posts-grid-container>article:last-child {
     display: initial;
   }
 }
